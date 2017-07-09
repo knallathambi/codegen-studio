@@ -1,0 +1,12 @@
+.file-tab {
+	padding: 5px 15px 5px 15px;
+}
+
+.tab-close {
+	color: #cccccc;
+	cursor: pointer;
+}
+
+.tab-close:hover {
+	color: #fff;
+}

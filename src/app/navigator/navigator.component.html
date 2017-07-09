@@ -1,0 +1,52 @@
+<div style="height: 100%; border: 1px solid #666666">
+	<div style="padding: 5px 5px 5px 5px;">
+		<p style="font-weight: bold;">PROJECT</p>
+	</div>
+
+	<div>
+		<ul class="file-tree">
+			<li class="file-tree-item" *ngFor=" let fileItem of fileTree; " >
+
+				<a href="javascript:void(0);" *ngIf="fileItem.type == 'dir'" (click)="fileClick(fileItem)" [ngClass]="{'item-clicked': fileItem.isClicked}">
+					<i class="file-icon fa" [ngClass]="{'fa-folder': !fileItem.isExpand, 'fa-folder-open': fileItem.isExpand}"></i>
+					<span>{{fileItem.name}}</span>
+				</a>
+				<a href="javascript:void(0);" *ngIf="fileItem.type == 'file'" (click)="fileClick(fileItem)" [ngClass]="{'item-clicked': fileItem.isClicked}">
+					<i class="file-icon fa fa-file-text" ></i>					
+					<span>{{fileItem.name}}</span>
+				</a>
+
+				<ul class="file-tree" *ngIf="fileItem.children.length > 0 && fileItem.isExpand">
+					<li class="file-tree-item" *ngFor=" let childItem of fileItem.children; ">
+
+						<a href="javascript:void(0);" *ngIf="childItem.type == 'dir'" (click)="fileClick(childItem)" [ngClass]="{'item-clicked': childItem.isClicked}">
+							<i class="file-icon fa" [ngClass]="{'fa-folder': !childItem.isExpand, 'fa-folder-open': childItem.isExpand}"></i>
+							<span>{{childItem.name}}</span>
+						</a>
+						<a href="javascript:void(0);" *ngIf="childItem.type == 'file'" (click)="fileClick(childItem)" [ngClass]="{'item-clicked': childItem.isClicked}">
+							<i class="file-icon fa fa-file-text" ></i>					
+							<span>{{childItem.name}}</span>
+						</a>
+
+						<ul class="file-tree" *ngIf="childItem.children.length > 0 && childItem.isExpand">
+							<li class="file-tree-item" *ngFor=" let grandChildItem of childItem.children; ">
+
+								<a href="javascript:void(0);" *ngIf="grandChildItem.type == 'dir'" (click)="fileClick(grandChildItem)" [ngClass]="{'item-clicked': grandChildItem.isClicked}">
+									<i class="file-icon fa" [ngClass]="{'fa-folder': !grandChildItem.isExpand, 'fa-folder-open': grandChildItem.isExpand}"></i>
+									<span>{{grandChildItem.name}}</span>
+								</a>
+								<a href="javascript:void(0);" *ngIf="grandChildItem.type == 'file'" (click)="fileClick(grandChildItem)" [ngClass]="{'item-clicked': grandChildItem.isClicked}">
+									<i class="file-icon fa fa-file-text" ></i>					
+									<span>{{grandChildItem.name}}</span>
+								</a>
+
+							</li>				
+						</ul>							
+
+					</li>				
+				</ul>	
+
+			</li>		
+		</ul>
+	</div>
+</div>
