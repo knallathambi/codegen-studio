@@ -1,0 +1,16 @@
+.console {
+	font-family: "Lucida Console";
+	font-size: 12px;
+	color: yellow;
+	height: 100%;
+	padding: 5px 5px 20px 0px;
+	background-color: #1a1a1a;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.console p {
+	white-space: pre-line;
+	overflow-wrap: break-word;
+	padding-left: 5px;
+}

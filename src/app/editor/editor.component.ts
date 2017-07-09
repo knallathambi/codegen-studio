@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-editor',
@@ -7,23 +7,64 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditorComponent implements OnInit {
 
-  private tabs:any[] = [
-  {
-  	name: 'file1.txt',
-  	isActive: true
-  },
-  {
-  	name: 'file2.txt',
-  	isActive: false
-  }
-
-  ];
+  private tabs:any[] = [];
 
   private selectedTab:any;
+  private fileTree: any[] = [];
 
   constructor() { }
 
   ngOnInit() {
+    this.tabs.push({
+      name: 'CONSOLE',
+      file: {
+        id: "9.9.9",
+        name: "CONSOLE",
+        type: "console",
+        subType: 'console',
+        expand: false,
+        isLoading: false,  
+        isClicked: false,    
+        children: []
+      },
+      isActive: true,
+      isClosable: false
+    });
+  }
+
+  @Input()
+  set projectTree(projectTree: any[]){
+    this.fileTree = projectTree || [];
+    //console.log(JSON.stringify(this.fileTree));
+    console.log('Project tree setter');
+  }
+
+  get projectTree(){
+    return this.fileTree;
+  }
+
+  public openFile(fileObject:any){
+    var fIndx = this.getTabIndex(fileObject);
+    if (fIndx >= 0){
+      this.onTabSelect(fIndx);    
+    } else {
+      this.tabs.push({
+        name: fileObject.name,
+        file: fileObject,
+        isActive: false,
+        isClosable: true
+      });
+      this.onTabSelect(this.tabs.length -1);      
+    }
+  }
+
+  private getTabIndex(fileObject:any){
+    for(var i=0; i<this.tabs.length ; i++){
+      if (this.tabs[i].file.id == fileObject.id){
+        return i;
+      }
+    }
+    return -1;
   }
 
   private onTabSelect(tabIndex: number){

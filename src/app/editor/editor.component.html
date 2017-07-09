@@ -2,10 +2,14 @@
   <li role="presentation" *ngFor="let tab of tabs; index as inx" [ngClass]="{'active': tab.isActive}" >
   	<a href="javascript:void(0);" class="file-tab" (click)="onTabSelect(inx)" >
   		<span style="padding-right: 5px;">{{tab.name}}</span>
-  		<i class="fa fa-times tab-close pull-right" (click)="onTabClose(inx)"></i>
+  		<i class="fa fa-times tab-close pull-right" (click)="onTabClose(inx)" *ngIf="tab.isClosable"></i>
   	</a>
   </li>
 </ul>	
-<div style="width: 100%; height: 100%; padding: 20px 5px 5px 5px;">
-	<app-json-editor></app-json-editor>
+
+<div class="tab-content" *ngFor="let tab of tabs" [hidden]="!tab.isActive">
+	<app-json-editor [(file)]="tab.file" *ngIf="tab.file.subType == 'json'"></app-json-editor>
+	<app-coboleditor [(file)]="tab.file" *ngIf="tab.file.subType == 'cobol'"></app-coboleditor>
+
+	<app-console *ngIf="tab.file.subType == 'console'"></app-console>
 </div>

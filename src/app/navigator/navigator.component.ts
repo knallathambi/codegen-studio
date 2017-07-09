@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import {ProjectService} from '../service/project.service';
 
@@ -9,17 +9,25 @@ import {ProjectService} from '../service/project.service';
 })
 export class NavigatorComponent implements OnInit {
 
-  private fileTree: any[] = [];
+  @Output()
+  onFileClick = new EventEmitter<any>();
 
+  private fileTree: any[] = [];
   private clickedFileItem:any;
 
   constructor(private projectService:ProjectService) { }
 
   ngOnInit() {
-  	this.projectService.getNewProject()
-  		.then(response => this.fileTree = response )
-  		.catch(err => console.log(err))
-  		;
+  }
+
+  @Input()
+  set projectTree(projectTree: any[]){
+    this.fileTree = projectTree || [];
+    console.log('Project tree setter');
+  }
+
+  get projectTree(){
+    return this.fileTree;
   }
 
 
@@ -33,6 +41,8 @@ export class NavigatorComponent implements OnInit {
   	}
   	this.clickedFileItem = fileItem;
   	fileItem.isClicked = true;
+
+    this.onFileClick.emit(this.clickedFileItem);
   }
 
 }

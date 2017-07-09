@@ -1,13 +1,19 @@
-<div class="row">
-	<div class="btn-toolbar pull-right" style="padding-right: 30px;">
+<app-loading></app-loading>
+<app-newproject (onCreated)="onProjectCreated($event)"></app-newproject>
+
+<div class="row" style="padding-bottom: 10px;">
+	<div class="btn-toolbar pull-right" style="padding-right: 50px;">
 		<div class="btn-group" >
-		  <button type="button" class="btn btn-default">
+		  <button type="button" class="btn btn-default" (click)="onProjectAdd()" title="New Project" [disabled]="!isEnableNew">
 		  	<i class="fa fa-plus fa-lg" aria-hidden="true"></i>
 		  </button>
-		  <button type="button" class="btn btn-default">
+		  <button type="button" class="btn btn-default" (click)="onGenerate()" title="Generate Code" [disabled]="!isEnableGenerate">
 		  	<i class="fa fa-cogs fa-lg" aria-hidden="true"></i>
 		  </button>
-		  <button type="button" class="btn btn-default">
+		  <button type="button" class="btn btn-default" title="Deploy" [disabled]="!isEnableDeploy">
+		  	<i class="fa fa-upload fa-lg" aria-hidden="true"></i>
+		  </button>	
+		  <button type="button" class="btn btn-default" title="Delete Project" [disabled]="!isEnableDelete">
 		  	<i class="fa fa-trash fa-lg" aria-hidden="true"></i>
 		  </button>
 		</div>	
@@ -15,9 +21,9 @@
 </div>
 <div class="row" style="height: 100%; width: 100%">
 	<div class="col-md-3" style="height: 100%; padding-right: 0px;">
-		<app-navigator></app-navigator>
+		<app-navigator  [(projectTree)]="projectTree" (onFileClick)="onFileClicked($event)" ></app-navigator>
 	</div>
 	<div class="col-md-9" style="height: 100%; padding-left: 0px;">
-		<app-editor></app-editor>
+		<app-editor [(projectTree)]="projectTree" ></app-editor>
 	</div>	
 </div>

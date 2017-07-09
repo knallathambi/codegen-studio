@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule }    from '@angular/http';
+import { FormsModule }    from '@angular/forms';
 
 import {AgGridModule} from "ag-grid-angular/main";
 import { AppComponent } from './app.component';
@@ -15,6 +16,10 @@ import { JsonEditorComponent } from './json-editor/json-editor.component';
 import { LoadingComponent } from './loading/loading.component';
 
 import { ProjectService } from './service/project.service';
+import { ConsoleService } from './service/console.service';
+import { NewprojectComponent } from './newproject/newproject.component';
+import { CoboleditorComponent } from './coboleditor/coboleditor.component';
+import { ConsoleComponent } from './console/console.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -33,16 +38,21 @@ const appRoutes: Routes = [
     AceEditorComponent,
     JsonEditorComponent,
     AceEditorDirective,
-    LoadingComponent
+    LoadingComponent,
+    NewprojectComponent,
+    CoboleditorComponent,
+    ConsoleComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule,
     AgGridModule.withComponents([]),
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    ProjectService
+    ProjectService,
+    ConsoleService
   ],
   bootstrap: [AppComponent]
 })

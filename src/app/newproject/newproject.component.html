@@ -1,0 +1,67 @@
+<div class="newproject-modal" *ngIf="isShow">
+  <div class="modal-dialog">
+    <div class="modal-content" style="margin: 15% auto;">
+      <div class="modal-header" style="padding: 5px 10px 5px 10px;">
+        <button type="button" class="close" (click)="close()">&times;</button>
+        <h4 class="modal-title">Create New project</h4>
+      </div>
+      <div class="modal-body" style="min-height: 300px; overflow: auto;">
+        <form class="form-horizontal">
+		    <div class="form-group">
+		      <label class="col-md-2 control-label">Template</label>
+		      <div class="col-md-8">
+		        <select class="form-control" name="templateId" [(ngModel)]="project.template">
+		          <option *ngFor="let template of templateList" [ngValue]="template">{{template.description}}</option>
+		        </select>
+		      </div>
+		    </div>   
+		    <div *ngIf="project.template.id == 'cob_crud_code_generate'">
+			    <div class="form-group">
+			      <label class="col-md-2 control-label">Project</label>
+			      <div class="col-md-6">
+			      	<input type="text" class="form-control" name="projectName" [(ngModel)]="project.name" (ngModelChange)="modelChange($event)" placeholder="Name">
+			      </div>
+			      <div class="col-md-2">
+			      	<input type="text" class="form-control" name="projectVersion" [(ngModel)]="project.version" (ngModelChange)="modelChange($event)" placeholder="Version">
+			      </div>
+			    </div>  
+			    <hr/>      		         
+			    <div class="form-group">
+			      <label class="col-md-2 control-label">COBOL program</label>
+			      <div class="col-md-3">
+			      	<input type="text" class="form-control" name="cobolId" [(ngModel)]="crudDbConfig.module.id" (ngModelChange)="modelChange($event)" placeholder="Name">
+			      </div>
+			      <div class="col-md-7">
+			      	<input type="text" class="form-control" name="cobolDesc" [(ngModel)]="crudDbConfig.module.description" (ngModelChange)="modelChange($event)" placeholder="Description">
+			      </div>
+			    </div>  
+			    <div class="form-group">
+			      <label class="col-md-2 control-label">Schema</label>
+			      <div class="col-md-3">
+			      	<input type="text" class="form-control" name="schema" [(ngModel)]="crudDbConfig.schema" (ngModelChange)="modelChange($event)" placeholder="Schema">
+			      </div>
+			    </div>  
+			    <div class="form-group">
+			      <label class="col-md-2 control-label">Base Table</label>
+			      <div class="col-md-6">
+			      	<input type="text" class="form-control" name="baseTable" [(ngModel)]="crudDbConfig.baseTable" (ngModelChange)="modelChange($event)" placeholder="Base Table Name">
+			      </div>
+			    </div>  
+			    <div class="form-group">
+			      <label class="col-md-2 control-label">Audit Table</label>
+			      <div class="col-md-6">
+			      	<input type="text" class="form-control" name="auditTable" [(ngModel)]="crudDbConfig.auditTable" (ngModelChange)="modelChange($event)" placeholder="Audit Table Name">
+			      </div>
+			    </div>  
+
+		    </div>
+        </form>
+        <!-- <pre>{{project | json}}</pre> -->
+      </div>
+      <div class="modal-footer" style="padding: 5px 10px 5px 10px;">
+        <button type="button" class="btn btn-default" (click)="close()" >Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="onFinish()" [disabled]="!isFormComplete">Finish</button>
+      </div>
+    </div>
+  </div>
+</div>
