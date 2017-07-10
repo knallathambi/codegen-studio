@@ -1,0 +1,33 @@
+<div class="code-generate-modal" *ngIf="isShow">
+  <div class="modal-dialog">
+    <div class="modal-content" style="margin: 15% auto;">
+      <div class="modal-header" style="padding: 5px 10px 5px 10px;">
+        <button type="button" class="close" (click)="close()">&times;</button>
+        <h4 class="modal-title">Generate</h4>
+      </div>
+      <div class="modal-body" style="min-height: 300px; overflow: auto;">
+        <form class="form-horizontal">
+			<fieldset>
+				<legend>Mainframe Authentication</legend>        
+			    <div class="form-group">
+			      <label class="col-md-2 control-label">User Id</label>
+			      <div class="col-md-6">
+			      	<input type="text" class="form-control" name="userId" [(ngModel)]="userId" (ngModelChange)="modelChange($event)" placeholder="User Id">
+			      </div>
+			    </div>         
+			    <div class="form-group">
+			      <label class="col-md-2 control-label">Password</label>
+			      <div class="col-md-6">
+			      	<input type="password" class="form-control" name="password" [(ngModel)]="password" (ngModelChange)="modelChange($event)" >
+			      </div>
+			    </div>  
+		    </fieldset>        		     
+        </form>
+      </div>
+      <div class="modal-footer" style="padding: 5px 10px 5px 10px;">
+        <button type="button" class="btn btn-default" (click)="close()" >Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="onFinish()" [disabled]="!isFormComplete">Finish</button>
+      </div>
+    </div>
+  </div>
+</div>

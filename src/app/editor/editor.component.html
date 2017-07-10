@@ -9,6 +9,7 @@
 
 <div class="tab-content" *ngFor="let tab of tabs" [hidden]="!tab.isActive">
 	<app-json-editor [(file)]="tab.file" *ngIf="tab.file.subType == 'json'"></app-json-editor>
+	<app-testscript-editor [(file)]="tab.file" *ngIf="tab.file.subType == 'test'"></app-testscript-editor>
 	<app-coboleditor [(file)]="tab.file" *ngIf="tab.file.subType == 'cobol'"></app-coboleditor>
 
 	<app-console *ngIf="tab.file.subType == 'console'"></app-console>

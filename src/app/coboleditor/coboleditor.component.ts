@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import 'brace/theme/twilight';
+import 'brace/mode/cobol';
+
 @Component({
   selector: 'app-coboleditor',
   templateUrl: './coboleditor.component.html',
@@ -33,7 +36,7 @@ export class CoboleditorComponent implements OnInit {
   }
 
   onSave(){
-    this._file.content = this.modifiedText;
+    this._file.content.source = this.modifiedText;
   }
 
 }

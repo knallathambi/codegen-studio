@@ -1,5 +1,6 @@
 <app-loading></app-loading>
 <app-newproject (onCreated)="onProjectCreated($event)"></app-newproject>
+<app-code-generate [(project)]="selectedFile" (onGenerated)="onProjecGenerated($event)"></app-code-generate>
 
 <div class="row" style="padding-bottom: 10px;">
 	<div class="btn-toolbar pull-right" style="padding-right: 50px;">
@@ -13,6 +14,9 @@
 		  <button type="button" class="btn btn-default" title="Deploy" [disabled]="!isEnableDeploy">
 		  	<i class="fa fa-upload fa-lg" aria-hidden="true"></i>
 		  </button>	
+		  <button type="button" class="btn btn-default" title="Share it to GIT" [disabled]="!isEnableDeploy">
+		  	<i class="fa fa-share-alt fa-lg" aria-hidden="true"></i>
+		  </button>			  
 		  <button type="button" class="btn btn-default" title="Delete Project" [disabled]="!isEnableDelete">
 		  	<i class="fa fa-trash fa-lg" aria-hidden="true"></i>
 		  </button>

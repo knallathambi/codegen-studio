@@ -59,7 +59,7 @@ export class NewprojectComponent implements OnInit {
       name: "untitled1",
       type: "dir",
       subType: 'project',
-      expand: false,
+      isExpand: false,
       isLoading: false,
       isClicked: false,
       children: [
@@ -68,7 +68,7 @@ export class NewprojectComponent implements OnInit {
         name: "src",
         type: "dir",
         subType: 'folder',
-        expand: false,
+        isExpand: false,
         isLoading: false,  
         isClicked: false,    
         children: [
@@ -77,7 +77,7 @@ export class NewprojectComponent implements OnInit {
           name: "dbConfig.json",
           type: "file",
           subType: 'json',
-          expand: false,
+          isExpand: false,
           isLoading: false,
           isClicked: false,
           content: {},
@@ -91,7 +91,7 @@ export class NewprojectComponent implements OnInit {
         name: "build",
         type: "dir",
         subType: 'folder',
-        expand: false,
+        isExpand: false,
         isLoading: false,   
         isClicked: false,   
         children: []      
@@ -101,7 +101,7 @@ export class NewprojectComponent implements OnInit {
         name: "test",
         type: "dir",
         subType: 'folder',
-        expand: false,
+        isExpand: false,
         isLoading: false,   
         isClicked: false,   
         children: []      
@@ -111,7 +111,7 @@ export class NewprojectComponent implements OnInit {
         name: "log",
         type: "dir",
         subType: 'folder',
-        expand: false,
+        isExpand: false,
         isLoading: false,  
         isClicked: false,    
         children: []      
@@ -121,7 +121,7 @@ export class NewprojectComponent implements OnInit {
         name: "project.json",
         type: "file",
         subType: 'json',
-        expand: false,
+        isExpand: false,
         isLoading: false,   
         isClicked: false,   
         content: {},

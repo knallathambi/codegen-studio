@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { LoadingComponent } from '../loading/loading.component';
 import { NewprojectComponent } from '../newproject/newproject.component';
+import { CodeGenerateComponent } from '../code-generate/code-generate.component';
 import { EditorComponent } from '../editor/editor.component';
 
 import {ProjectService} from '../service/project.service';
@@ -22,6 +23,9 @@ export class HomeComponent implements OnInit, AfterViewInit  {
 
   @ViewChild(EditorComponent)
   private editorComponent: EditorComponent;  
+
+  @ViewChild(CodeGenerateComponent)
+  private codeGenerateComponent: CodeGenerateComponent;    
 
   projectTree:any[] = [];
   selectedFile:any = {};
@@ -64,6 +68,16 @@ export class HomeComponent implements OnInit, AfterViewInit  {
   	if (fileClicked.type == 'file'){
   		this.editorComponent.openFile(fileClicked);
   	}
+  }
+
+  private onGenerate(){
+    if (this.selectedFile && this.selectedFile.subType == 'project'){
+      this.codeGenerateComponent.show();
+    }
+  }
+
+  private onProjecGenerated(){
+
   }
 
 }
