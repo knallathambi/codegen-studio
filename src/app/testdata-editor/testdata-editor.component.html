@@ -1,0 +1,75 @@
+<div class="testdata-editor-modal" *ngIf="isShow">
+  <div class="modal-dialog">
+    <div class="modal-content" style="margin: 15% auto;">
+      <div class="modal-header" style="padding: 5px 10px 5px 10px;">
+        <button type="button" class="close" (click)="close()">&times;</button>
+        <h4 class="modal-title">{{_testCase.description}}</h4>
+      </div>
+      <div class="modal-body" >
+		<ul class="nav nav-tabs">
+		  <li role="presentation" [ngClass]="{'active': tabIndex == 0}" >
+		  	<a href="javascript:void(0);" class="file-tab" (click)="tabIndex = 0;" >
+		  		<span style="padding-right: 5px;">DATA</span>
+		  	</a>
+		  </li>
+		  <li role="presentation" [ngClass]="{'active': tabIndex == 1}" >
+		  	<a href="javascript:void(0);" class="file-tab" (click)="tabIndex = 1;" >
+		  		<span style="padding-right: 5px;">ASSERTIONS</span>
+		  	</a>
+		  </li>		  
+		</ul> 
+		<div style="min-height: 300px; overflow: auto;">
+			<div *ngIf="tabIndex == 0">
+			  <table class="table table-condensed" style="font-size: 12px;">
+			  	<thead>
+			  		<tr>
+			  			<th>DATA</th>
+			  			<th>VALUE</th>
+			  		</tr>
+			  	</thead>
+			  	<tbody>
+			  		<tr>
+			  			<td class="col-md-4">DATA1</td>
+			  			<td class="col-md-8">
+			  				<input type="text" class="form-control" >
+			  			</td>
+			  		</tr>
+			  		<tr>
+			  			<td class="col-md-4">DATA2</td>
+			  			<td class="col-md-8">
+			  				<input type="text" class="form-control" >
+			  			</td>
+			  		</tr>
+
+			  	</tbody>
+			  </table>		
+			</div>
+			<div *ngIf="tabIndex == 1">
+			  <table class="table table-condensed" style="font-size: 12px;">
+			  	<thead>
+			  		<tr>
+			  			<th>DATA</th>
+			  			<th>OPERATOR</th>
+			  			<th>VALUE</th>
+			  		</tr>
+			  	</thead>
+			  	<tbody>
+			  		<tr>
+			  			<td class="col-md-4">DATA1</td>
+			  			<td class="col-md-2">Equals</td>
+			  			<td class="col-md-6">
+			  				<input type="text" class="form-control" >
+			  			</td>
+			  		</tr>
+			  	</tbody>
+			  </table>					
+			</div>			
+		</div>     
+      </div>
+      <div class="modal-footer" style="padding: 5px 10px 5px 10px;">
+        <button type="button" class="btn btn-default" (click)="close()" >Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="save()" >Save</button>
+      </div>
+    </div>
+  </div>
+</div>

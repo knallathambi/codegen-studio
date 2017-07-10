@@ -22,6 +22,7 @@ import { CoboleditorComponent } from './coboleditor/coboleditor.component';
 import { ConsoleComponent } from './console/console.component';
 import { CodeGenerateComponent } from './code-generate/code-generate.component';
 import { TestscriptEditorComponent } from './testscript-editor/testscript-editor.component';
+import { TestdataEditorComponent } from './testdata-editor/testdata-editor.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -45,7 +46,8 @@ const appRoutes: Routes = [
     CoboleditorComponent,
     ConsoleComponent,
     CodeGenerateComponent,
-    TestscriptEditorComponent
+    TestscriptEditorComponent,
+    TestdataEditorComponent
   ],
   imports: [
     BrowserModule,

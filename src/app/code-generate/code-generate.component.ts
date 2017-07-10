@@ -9,7 +9,7 @@ import {ConsoleService} from '../service/console.service';
 export class CodeGenerateComponent implements OnInit {
 
 	private isShow:boolean = false;
-	private isFormComplete:boolean = false;
+	private isFormComplete:boolean = true;
 	private userId:string = '';
 	private password:string = '';
 	private _project:any;
@@ -88,6 +88,7 @@ export class CodeGenerateComponent implements OnInit {
 						description: 'CRUD DB Insert',
 						data: {},
 						assertions: [],
+						status: '',
 						result: false
 					}
 					]
